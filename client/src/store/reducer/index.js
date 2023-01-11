@@ -34,7 +34,7 @@ const rootReducer = (state = initialState, action) => {
         // --filtra por temperamento-- //
         case 'GET_FILTER_TEMPERAMENTS':
             const allDogs = state.allDogs;
-            const filterByDogsTemp = [];
+            let filterByDogsTemp = [];
             if (action.payload === 'Todos') {
                 filterByDogsTemp = allDogs;
             } else {
@@ -96,7 +96,7 @@ const rootReducer = (state = initialState, action) => {
                 return 0
             })
             : state.allDogs.sort((a,b) => {
-                if (parent(a.weight > b.weight[0])) {
+                if (parseInt(a.weight > b.weight[0])) {
                     return -1
                 }
                 if (parseInt(a.weight < b.weight[0])) {
@@ -106,7 +106,7 @@ const rootReducer = (state = initialState, action) => {
             });
             return {
                 ...state,
-                dogs: orderByName
+                dogs: orderByWeight
             };
 
         // --muestra los detalles del perro-- //

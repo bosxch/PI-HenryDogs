@@ -6,6 +6,7 @@ const { Dog, Temperaments } = require('../db');
 const {apiKey} = process.env;
 
 
+
 const urlApi = `https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`;
 
 // --Función para traer la data de la api-- //
@@ -115,7 +116,7 @@ router.post('/', async (req,res) => {
             height: Height,
             weight: Weight,
             life_span: life_span,
-            image: image ? image : 'https://img.freepik.com/vector-gratis/pata-diseno-logotipo-mascota-vector-negocio-tienda-animales_53876-136741.jpg?w=740&t=st=1673217550~exp=1673218150~hmac=73ebd3531f9464dab9bbfbba032c58137af1e086ca68c0e4f0047ebe5616d7f7'
+            image: image ? image : 'https://cdn.pixabay.com/photo/2014/03/25/16/24/paw-296964_960_720.png'
        });
 
        let dogTemperaments = await Temperaments.findAll({
