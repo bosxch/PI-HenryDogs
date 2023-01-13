@@ -1,0 +1,43 @@
+video {
+    position: fixed;
+    min-height: 100%;
+    min-width: 100%;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.center_container{
+    width: 50vw;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.center_container h1{
+    color: transparent;
+    text-shadow: 0 0 2px #25b687;
+    font-size: 4rem;
+    margin-bottom: 5%;
+}
+
+.center_container h3{
+    color: transparent;
+    text-shadow: 0 0 2px #25b687;
+    font-size: 1.4rem;
+    margin-bottom: 4%;
+}
+
+.title {
+    display: flex;
+    width: 300px;
+    height: 400px;
+    color: #000;
+    border: #25b687;
+    text-shadow: #fe7f01;
+    position: absolute;
+    font-size: 40px;
+    line-height: 40px;
+    
+}
