@@ -1,21 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import style from "../LandingPage/LandingPage.module.css";
-import "../LandingPage/ButtonHome.css"
+import style from './LandingPage.module.css';
 
-function LandingPage () {
-    return (
-        <div>
-            <video src="././multimedia/videobackground_landingpage.mp4" autoPlay loop alt={'Video representativo al proyecto'}/>
-            <div className={`${style.center_container}`}>
-                <h1 className={`${style.title}`}>BEST FRIEND FINDER</h1>
-                <h3>An application  to find or learn more about our best friends!</h3>
-                <Link to = '/home'>
-                <button className="button_home">Click me to start!</button>
-                </Link>
-            </div>
-        </div>
-    )
+import foto from "./img/manchi.png"
+
+function LandingPage() {
+  return (
+    <div className={style.div}>
+
+    <div className={style.section}>
+      <div className={style.textyimg}>
+
+      <div className={style.left}>
+      <h1 className={style.titulo}>Bienvenidos a Manchi Dogs!</h1>
+      <p>Esta es una web donde podran encontrar todas las razas de perros que existen podran filtrarlas a gusto y hasta crear tus propias Razas!</p>
+      </div>
+      
+      <img className={style.img} src={foto} alt="jpg" />
+      </div>
+      
+      <Link to="/home">
+        <button className={style.button}>Entrar</button>
+      </Link>
+    </div>
+    </div>
+  );
 }
 
 export default LandingPage;

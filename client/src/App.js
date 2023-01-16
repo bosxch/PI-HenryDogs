@@ -1,30 +1,26 @@
-import './App.css';
-import { Route, Switch, BrowserRouter } from "react-router-dom";
-import LandingPage from "./components/LandingPage/LandingPage";
-import Home from "./components/Home/Home"
-import DogDetails from "./components/DogDetails/DogDetails";
-import FormAddDog from "./components/FormAddDog/FormAddDog";
+import "./App.css";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Home from "./Components/Home/Home";
+import DogDetail from "./Components/DogDetail/DogDetail";
+import NavBar from "./Components/NavBar/NavBar";
+import LandingPage from "./Components/LandingPage/LandingPage";
+import CreateDog from "./Components/CreateDog/CreateDog";
+
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className='App'>
-        <Switch>
-          <Route exact path={'/'}>
-            <LandingPage/>
-          </Route>
-          <Route exact path={'/home'}>
-            <Home/>
-          </Route>
-          <Route exact path={'/dog-detail/:id'}>
-            <DogDetails/>
-          </Route>
-          <Route exact path={'/dog'}>
-            <FormAddDog/>
-          </Route>
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <>
+          <NavBar />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/dogs/:id" component={DogDetail} />
+          <Route exact path="/createDog" component={CreateDog} />
+        </>
+      </Switch>
+    </div>
   );
 }
 

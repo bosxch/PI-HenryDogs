@@ -1,0 +1,117 @@
+.buttonYform {
+    background-image: url("../Home/img/foondos.jpg");
+    display: flex;
+    background-size: cover;
+    overflow-y:scroll;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .formCreateDog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+  }
+  .buttonBack {
+    background-color: var(--button-go-back);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: var(--button-go-back-letra);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    height: fit-content;
+    width: fit-content;
+    padding: 15px 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.036) 0 3px 8px;
+  }
+  .boxstyle {
+    background-color: var(--background-color-box);
+    margin-top: 30px;
+    border-radius: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 10%;
+  }
+  .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    color: var(--title-create-dogs);
+    text-shadow: 2px 2px 15px var(--title-shadow-color);
+    font-weight: 600;
+    font-size: 3rem;
+  }
+  .div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: fit-content;
+  }
+  .label {
+    display: flex;
+    font-weight: 500;
+    font-size: 1.1rem;
+    align-content: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+    color: var(--color-titulos-campos);
+  }
+  .input {
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: antiquewhite;
+  }
+  .tempsdisplay {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+  }
+  .close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-close-button);
+    border-radius: 999px;
+    width: 25px;
+    height: 25px;
+    opacity: 0.3;
+  }
+  .close:hover {
+    opacity: 1;
+  }
+  .buttonCrear {
+    background-color: var(--color-background-crear);
+    border-radius: 6px;
+    border-width: 0;
+    box-sizing: border-box;
+    color: var(--color-text-crear);
+    cursor: pointer;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 12px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  .error {
+    font-size: medium;
+    color: var(--error-message-color);
+  }
+  

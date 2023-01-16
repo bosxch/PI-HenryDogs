@@ -1,0 +1,75 @@
+.NavBar {
+    display: flex;
+    background-position: cover;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    background-color: var(--background-color-Nav);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.208);
+   
+  }
+  .searchBar{
+    border: 1px solid var(--borderbottom-color-searchbar);
+    width: fit-content;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    display: flex;
+    height: 2.5rem;
+    align-items: center;
+    box-shadow: 0 0 0 #0000;
+  }
+  .input{
+    width: 25vw;
+    background-color: var(--background-color-input);
+    font-family: sans-serif;
+    border: none;
+    color: var(--input-color-text);
+    padding: 10px 1rem;
+    
+  }
+  .input::placeholder{
+    color: var(--input-color-placeholder-text);
+    font-family: sans-serif;
+    font-weight: 300;
+  }
+  .input:focus{
+    outline: none;
+  }
+  .submit{
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    height: 100%;
+    font-weight: 700;
+    background-color: var(--submit-background-color);
+    justify-content: center;
+    align-items: center;
+    object-fit: fill;
+    padding: 10px;
+    color: var(--color-boton-search-text);
+  
+  }
+  .imglogo {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+  }
+  .creaPerro{ 
+    background-color: var(--btn-crear-color);
+    border-radius: 6px;
+    border-width: 0;
+    box-sizing: border-box;
+    color: var(--color-text-button);
+    cursor: pointer;
+    font-size: 100%;
+    height: 44px;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  
+ 
