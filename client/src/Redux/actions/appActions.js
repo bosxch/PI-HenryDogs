@@ -42,9 +42,10 @@ export function getTemps() {
   return async function (dispatch) {
     try {
       let temps = await axios.get("http://localhost:3001/temperaments");
+      let tempnew = temps.data.filter(el => el !== "")
       return dispatch({
         type: GET_ALL_TEMPS,
-        payload: temps.data,
+        payload: tempnew,
       });
     } catch (err) {
       console.log(err);

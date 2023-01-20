@@ -68,12 +68,18 @@ import {
       case FILTER_BY_WEIGHT: {
         //const orderDogs = state.AllDogsCopy
   
-        const orderWeight =
+        var orderWeight =
           action.payload === "maxWeight"
             ? state.dogs.sort((a, b) => Number(b.weightMax) - Number(a.weightMax))
             : state.dogs.sort(
                 (a, b) => Number(a.weightMin) - Number(b.weightMin)
               );
+          orderWeight = 
+          action.payload === 'maxWeight'
+          ?  state.dogs
+          : state.dogs.sort(
+            (a,b) => Number(a.weightMax) - Number(b.weightMax)
+          )  
         return {
           ...state,
           dogs: orderWeight,
