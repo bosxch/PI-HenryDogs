@@ -1,6 +1,5 @@
 import axios from "axios";
 
-export const SET_APP_IS_LOADING = "app/setIsLoading";
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
 export const GET_DOG_DETAIL = "GET_DOG_DETAIL";
 export const GET_NAME_DOGS = "GET_NAME_DOGS";
@@ -15,12 +14,7 @@ export const DELETE_DOG = "DELETE_DOG";
 
 //Las actions estan compuestas por un identificador y los datos que va a manejar el reducer..
 
-export function setIsLoading(value) {
-  return {
-    type: SET_APP_IS_LOADING,
-    payload: value,
-  };
-}
+
 export function getDogos() {
   return async function (dispatch) {
      var json = await axios.get("http://localhost:3001/dogs");

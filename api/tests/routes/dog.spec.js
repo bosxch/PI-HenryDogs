@@ -2,23 +2,18 @@
 const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../../src/app.js');
-const { Dog, conn } = require('../../src/db.js');
+const { Raza, conn } = require('../../src/db.js');
+const request = require('supertest');
 
 const agent = session(app);
-const dog = {
-  name: 'Pug',
-};
 
-describe('Videogame routes', () => {
-  before(() => conn.authenticate()
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  }));
-  beforeEach(() => Dog.sync({ force: true })
-    .then(() => Dog.create(dog)));
-  describe('GET /dogs', () => {
-    it('should get 200', () =>
-      agent.get('/dogs').expect(200)
-    );
+
+describe('Dogs routes', () => {
+  it('should return status 200 to get dogs', async () => {
+    const res = await request(app).get('/dogs');
+    expect(res.statusCode).to.be.equal(200);
+    done=Function
+   done()
   });
-});
+
+})

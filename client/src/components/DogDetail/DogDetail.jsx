@@ -15,6 +15,7 @@ function DogDetail(props) {
     };
   }, [dispatch, props.match.params.id]);
 
+  
   return (
     //---------------------------BOTTON REGRESO-------------------------------------------
     <div className={style.buttonYform}>
@@ -28,7 +29,7 @@ function DogDetail(props) {
           <img
             className={style.img}
             src={dogs.image}
-            alt="DogIMG"
+            alt='Dog image'
             width="250px"
             height="250px"
           />

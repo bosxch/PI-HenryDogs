@@ -123,7 +123,7 @@ router.post("/dogs", async (req, res) => {
   } = req.body;
 
   if (!name || !heightMin || !heightMax || !weightMax || !weightMin || !life_span || !image || !temperament) {
-    res.status(404).send("Falta informacion necesaria");
+    res.status(404).send(new Error("Falta informacion necesaria"));
   }
 
   let dogCreated = await Raza.create({

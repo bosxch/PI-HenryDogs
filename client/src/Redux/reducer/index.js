@@ -1,5 +1,4 @@
 import {
-    SET_APP_IS_LOADING,
     GET_ALL_DOGS,
     GET_DOG_DETAIL,
     GET_ALL_TEMPS,
@@ -14,7 +13,6 @@ import {
   
   //Estos son los estados iniciales que vamos a manejar, isLoading booleano para ver si esta cargando informacion, dogs va contener toda la informacion de los perros y se modificara segun los filtros y acciones aplicadas, dogsDetail va a ser usada para representar un solo perro en DogDetail, temps va a traer todos los temperamentos de los perros, y allDogs es una copia de dogs que nunca va a ser modificada, para lograr tener el state original siempre a mano
   const INITIAL_STATE = {
-    isLoading: false,
     dogs: [],
     dogsDetail: [],
     temps: [],
@@ -23,12 +21,7 @@ import {
   
   function rootReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
-      case SET_APP_IS_LOADING: {
-        return {
-          ...state,
-          isLoading: action.payload,
-        };
-      }
+      
       case GET_ALL_DOGS: { //trae state, la info de dogs y copia allDogs
         return { ...state, dogs: action.payload, allDogs: action.payload };
       }
@@ -114,21 +107,7 @@ import {
           dogs: filterTemperaments
         }
       }
-       /*  const copyAllDogs = state.allDogs;
-        const filterTemperaments = copyAllDogs.filter((e) => {
-          if (typeof e.temperament === "string") {
-            return e.temperament.includes(action.payload);
-          }
-          if (Array.isArray(e.Temperamentos)) {
-            let temp = e.Temperamentos.map((e) => e.name);
-            return temp.includes(action.payload);
-          }
-        });
-        return {
-          ...state,
-          dogs: filterTemperaments,
-        };
-      } */
+      
       case GET_CLEAN: {
         return {
           ...state,
