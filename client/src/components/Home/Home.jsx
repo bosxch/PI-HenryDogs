@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import NavBar from "../NavBar/NavBar";
 
 //-------LINKS------
 import { Link } from "react-router-dom";
@@ -26,43 +27,40 @@ import Logo from "./img/reload.png";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const dogs = useSelector((state) => state.dogs); //? SELECTOR DECLARACION DE ESTADO EN dogs
+  const dogs = useSelector((state) => state.dogs); 
   const temps = useSelector((state) => state.temps);
   
 
   //*---------------------PAGINADO ---------------------Estados locales..
-  const [currentPage, setCurrentPage] = useState(1); //Inicializo en 1 la pag
-  const [ /* orden */, setOrden] = useState(""); //Arranca vacio seteo en dicha pag luego de hacer dispatch
-  const [dogsXPage, /* setDogsXPage */] = useState(8); //cant de perros x pagina
-  const iLastDog = currentPage * dogsXPage; // index ultimo perro
-  const iFirstDog = iLastDog - dogsXPage; //index primer dog de esa pag
-  const currentDogs = dogs.slice(iFirstDog, iLastDog); //lo que tengo que renderizar
+  const [currentPage, setCurrentPage] = useState(1); 
+  const [ /* orden */, setOrden] = useState(""); 
+  const [dogsXPage] = useState(8); 
+  const iLastDog = currentPage * dogsXPage; 
+  const iFirstDog = iLastDog - dogsXPage; 
+  const currentDogs = dogs.slice(iFirstDog, iLastDog); 
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
   //*--------------------------------------------------------------------
 
-  //Es un hook que corre despues de la funcion de renderizado, puede ser disparado con ciertas dependencias
   useEffect(() => {
     dispatch(getDogos());
     dispatch(getTemps());
   }, [dispatch]);
 
-  /* useEffect(()=>{
-  },[]) */
 
 
 //---------------------------Handles-------------------------------------
-  //Los handles los utilizo para manejar acciones de botones, filtros y buscadores
+  
   function handleClick(e) {
-    e.preventDefault(); //Para que no recarge la pagina
-    dispatch(getDogos()); //Hago el Get con cada click
+    e.preventDefault(); 
+    dispatch(getDogos()); 
   }
   function handleFilter(e) {
     e.preventDefault();
-    dispatch(filterBy(e.target.value)); //Despacho el value de lo target
-    setCurrentPage(1); // Para que renderice el status tengo que setear la pagina en 1
+    dispatch(filterBy(e.target.value)); 
+    setCurrentPage(1); 
     setOrden(`Ordenado ${e.target.value}`); //
   }
   function handleFilterByWeigth(e) {
@@ -86,6 +84,7 @@ export default function Home() {
 //-----------------------------------------------------------------------
   return (
     <div className={style.all}>
+      <NavBar/>
 
       
       {/* --------------------------BY NAME------------------------- */}
@@ -98,10 +97,10 @@ export default function Home() {
         {/* -----------------------BY TEMP-------------------------- */}
         <select
           className={style.filters}
+          defaultValue="temp"
           onChange={(e) => handleFilterByTemps(e)}
         >
-          <option disabled selected defaultValue>By Temperament</option>
-          <option key={1+'e'} value='All'>All</option>
+          <option hidden>By Temperament</option>
           {temps.map((t) => (
             <option key={t} value={t}>
               {t}
@@ -122,7 +121,7 @@ export default function Home() {
           className={style.filters}
           onChange={(e) => handleFilterByApi_DB(e)}
         >
-          <option hidden>Api o DataBase</option>
+          <option hidden>By Origin</option>
           <option value="api">Api</option>
           <option value="db">DataBase</option>
         </select>
@@ -138,6 +137,7 @@ export default function Home() {
        
       </div>
       {/* ----------------------RENDER CARDS------------------------- */}
+      <Paginado className={style.paginado} dogsXPage={dogsXPage} dogs={dogs.length} paginado={paginado} />
       <div className={style.cards}>
         {currentDogs?.map(
           (
@@ -162,8 +162,6 @@ export default function Home() {
           )
         )}
       </div>
-      {/* ---------------------RENDER PAG---------------------------- */}
-      <Paginado dogsXPage={dogsXPage} dogs={dogs.length} paginado={paginado} />
     </div>
   );
 }

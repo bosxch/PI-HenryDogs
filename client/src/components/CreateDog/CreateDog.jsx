@@ -2,96 +2,132 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { postDog, getTemps } from "../../Redux/actions/appActions";
+import { useHistory } from 'react-router-dom'
 
 import style from "./CreateDog.module.css";
 //---------------------VALIDACION----------------------------------
 const validate = (input) => {
-  const errors = {}; //Aca guardamos nuestros errores
-  const regexName = /^[a-z ,.'-]+$/i; //regex validacion letras de a-z y sin simbolos
-  const regexNumLifeSpan = new RegExp("^[0-9-]+$"); //se utiliza para hacer coincidir texto con un patrón.
+  const errors = {}; 
+  const regexName = /^[a-z ,.'-]+$/i; 
+  const regexNumLifeSpan = new RegExp("^[0-9-]+$"); 
   const regexNum = new RegExp("^[0-9]+$");
 
   if (!input.name) {
-    errors.name = "Debes completar este campo";
-  } else if (input.name.length < 3 || input.name.length > 20) {
-    errors.name = "Tiene que tener entre 3 y 20 caracteres";
-  } else if (!regexName.test(input.name))
-    errors.name = "Solo puede usar letras";
+    errors.name = "This cannot be incomplete.";
+  } 
+  if (input.name.length < 3 || input.name.length > 20) {
+    errors.name = "It has to be between 3 and 20 characters.";
+  } 
+  if (!regexName.test(input.name))
+    errors.name = "You can only use letters.";
   //----------------------------------------------------------------
-  else if (!input.heightMin) {
-    errors.heightMin = "Debes completar este campo";
-  } else if (input.heightMin <= 0 || input.heightMin >= 100) {
-    //valores entre los que tiene que estar
-    errors.heightMin = "Debe que ser mayor a 1 y menor que 100";
-  } else if (!regexNum.test(input.heightMin))
-    //Condicion de numero
-    errors.heightMin = "Solo puede usar numeros";
+   if (!input.heightMin) {
+    errors.heightMin = "This cannot be incomplete.";
+  }  
+  if (input.heightMin <= 0 || input.heightMin >= 100) {
+    
+    errors.heightMin = "Must be greater than 1 and less than 100.";
+  }  
+  if (!regexNum.test(input.heightMin))
+    
+    errors.heightMin = "You can only use numbers.";
+    
+    
+  if (input.heightMin > input.heightMax) {
+      errors.heightMin = 'The min height cannot be bigger than the max height.'
+    }
   //----------------------------------------------------------------
-  else if (!input.heightMax) {
-    errors.heightMax = "Debes completar este campo";
-  } else if (input.heightMax <= 0 || input.heightMax >= 100) {
-    //valores entre los que tiene que estar
-    errors.heightMax = "Debe que ser mayor a 1 y menor que 100";
-  } else if (input.heightMax < input.heightMin) {
-    //No puede ser mayor al otro
-    errors.heightMax = "La altura minima no puede ser mayor a la maxima";
-  } else if (!regexNum.test(input.heightMax))
-    //Condicion de numero
-    errors.heightMax = "Solo puede usar numeros";
+  if (!input.heightMax) {
+    errors.heightMax = "This cannot be incomplete.";
+  } 
+  if (input.heightMax <= 0 || input.heightMax >= 100) {
+    
+    errors.heightMax = "Must be greater than 1 and less than 100.";
+  } 
+  if (input.heightMax < input.heightMin) {
+    
+    errors.heightMax = "The minimum height cannot be greater than the maximum.";
+  } 
+  if (!regexNum.test(input.heightMax))
+    
+    errors.heightMax = "You can only use numbers.";
+    
+  if (input.weightMin > input.weightMax) {
+      errors.weightMin = 'The min weight cannot be bigger than the max weight.'
+    }
   //----------------------------------------------------------------
-  else if (!input.weightMin) {
-    errors.weightMin = "Debes completar este campo";
-  } else if (input.weightMin <= 0 || input.weightMin >= 100) {
-    errors.weightMin = "Debe que ser mayor a 1 y menor que 100";
-  } else if (!regexNum.test(input.weightMin))
-    errors.weightMin = "Solo puede usar numeros";
+ if (!input.weightMin) {
+    errors.weightMin = "This cannot be incomplete.";
+  } 
+  if (input.weightMin <= 0 || input.weightMin >= 100) {
+    errors.weightMin = "Must be greater than 1 and less than 100.";
+  } 
+  if (!regexNum.test(input.weightMin))
+    errors.weightMin = "You can only use numbers.";
   //----------------------------------------------------------------
-  else if (!input.weightMax) {
-    errors.weightMax = "Debes completar este campo";
-  } else if (input.weightMax <= 0 || input.weightMax >= 100) {
-    errors.weightMax = "Debe que ser mayor a 1 y menor que 100";
-  } else if (input.weightMax < input.weightMin) {
-    errors.weightMax = "El peso minimo no puede ser mayor a la maxima";
-  } else if (!regexNum.test(input.weightMax))
-    errors.weightMax = "Solo puede usar numeros";
+ 
+  if (!input.weightMax) {
+    errors.weightMax = "This cannot be incomplete.";
+  } 
+  if (input.weightMax <= 0 || input.weightMax >= 100) {
+    errors.weightMax = "Must be greater than 1 and less than 100.";
+  } 
+  if (input.weightMax < input.weightMin) {
+    errors.weightMax = "The minimum weight cannot be greater than the maximum.";
+  } 
+  if (!regexNum.test(input.weightMax))
+    errors.weightMax = "You can only use numbers.";
   //----------------------------------------------------------------
-  else if (!input.life_span) {
-    //Vacio
-    errors.life_span = "Debes completar este campo";
-  } else if (!input.life_span.includes("-")) {
-    //Si no incluye un - para separar campos
+  
+  if (!input.life_span) {
+    
+    errors.life_span = "This cannot be incomplete.";
+  } 
+  if (!input.life_span.includes("-")) {
+    
     errors.life_span =
-      "Debes incluir un '-' dentro de promedio minimo o maximo";
-  } else if (!input.life_span.charAt(input.life_span.indexOf("-") + 1)) {
-    //CharAt me devuelve el valor en la posicion solicitada, aqui usamos +1 de la posicion donde se encuentre el '-';
-    errors.life_span = "Debe haber un numero detras del '-'";
-  } else if (
+      "You must include a '-' within the minimum or maximum average.";
+  }
+  if (!input.life_span.charAt(input.life_span.indexOf("-") + 1)) {
+   
+    errors.life_span = "There must be a number behind the '-'.";
+  } 
+  if (
     Number(input.life_span.split("-")[0]) >
     Number(input.life_span.split("-")[1])
   ) {
-    //Numero mayor que otro
-    errors.life_span = "El año minimo debe ser menor al año maximo";
-  } else if (regexNumLifeSpan.test(input.life_span) === false) {
-    errors.life_span = "Sin espacios, solo numeros positivos y '-'!";
-  } else if (input.life_span.charAt(0) === "-") {
-    errors.life_span = "Debes agregar un valor inicial";
+    
+    errors.life_span = "The minimum year must be less than the maximum year.";
+  } 
+  if (regexNumLifeSpan.test(input.life_span) === false) {
+    errors.life_span = "No spaces, only positive numbers and '-'!";
+  } 
+  if (input.life_span.charAt(0) === "-") {
+    errors.life_span = "You must add an initial value.";
+  }
+  if (input.life_span.split('-')[1] > 25) {
+    errors.life_span = 'You must enter values below 25 years.'
   }
   //----------------------------------------------------------------
-  else if (!input.temperament.length)
-    errors.temperament = "Debe completar este campo";
+ 
+  if (!input.temperament.length < 0)
+    errors.temperament = "This cannot be incomplete.";
   //----------------------------------------------------------------
-  else if (!input.image) errors.image = "Debe completar este campo";
-  else if (!/(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png)/.test(input.image)) {
-    errors.image = "El URL no es valido prueba con otro formato";
+
+  
+  if (input.image && !/(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png)/.test(input.image)) {
+    errors.image = "The URL is not valid try another format.";
   }
+  
   return errors;
+  
 };
 //------------------------FUNCION-----------------------------------
 function CreateDog() {
+  let history = useHistory ();
   const dispatch = useDispatch();
-  const temps = useSelector((state) => state.temps); //adhiero a temps los temperamentos
+  const temps = useSelector((state) => state.temps); 
   const [input, setInput] = useState({
-    //Estado local iniciados vacios, las modificaciones iran dentro de estos parametros declarados
     name: "",
     heightMin: "",
     weightMin: "",
@@ -105,14 +141,11 @@ function CreateDog() {
 
   //------------------------USE EFFECT-------------------------------
   useEffect(() => {
-    //Se despacha una vez renderizado, sujeto a cambios de dispatch
-    //Use effect utilizado traer el estado de los temperamentos
     dispatch(getTemps());
   }, [dispatch]);
   //------------------------HANDLE CHANGE---------------------------
 
   const handleInputSubmit = (e) => {
-    //Al momento de crearlo hace un dispatch en el boton crear activando la funcion postDog(pasando el estado por parametro), preventDefault para que no vuelva a renderizar, if(si tiene algun error es decir mayor a 0), Chequeo que ningun campo este vacio, dispatch de la funcion postDog pasandole el estado local de input como parametro, vuelvo a setear todos los cambios vacios.
     e.preventDefault();
     if (Object.values(errors).length > 0) {
       alert("Chequea errores");
@@ -123,11 +156,14 @@ function CreateDog() {
       input.heightMax === "" ||
       input.weightMax === "" ||
       input.life_span === "" ||
-      input.image === "" ||
+
       !input.temperament.length
     ) {
-      alert("Campos vacios");
+      alert("Missing data to complete");
     } else {
+      if (input.image === '') {
+        input.image = 'https://cdn.pixabay.com/photo/2014/04/03/00/35/footprint-308794_960_720.png'
+      }
       dispatch(postDog(input));
       alert("Tu Raza ha sido creada con exito!");
       setInput({
@@ -140,11 +176,11 @@ function CreateDog() {
         image: "",
         temperament: [],
       });
+      history.push ('/home');
     }
   };
   //----------------------------------------------------------------
   function handleChange(e) {
-    // Tod os los cambios van a ser manejados por este handleChange, ira actualizando el estado de input, creo un setErrors para que me vaya validando los errores a medida que voy cambiando el input
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -153,43 +189,44 @@ function CreateDog() {
   }
   //----------------------------------------------------------------
   function handleSelect(e) {
-    // Funcion que utilizo para los cambios. Traigo el input y modifica temperament
     setInput({
-      // Traigo los temperamentos anteriores sleccionados y agrego los que selecciono en el momento dentro del array
       ...input,
-      temperament: Array.from(new Set([...input.temperament, e.target.value])), //Set devuelve tipo de dato Set, luego lo vuelvo transformar en array. Evito repetidos
+      temperament: Array.from(new Set([...input.temperament, e.target.value])), 
     });
   }
   //----------------------------------------------------------------
   function handleDelete(e) {
-    //Utilizo el handle delete para poder borrar los temps no deseados, filtro sobre input.temperament y devuelvo los que no coincidan con el seleccionado
     setInput({
       ...input,
       temperament: input.temperament.filter((temp) => temp !== e),
     });
   }
+
+ 
+
+
   //* ----------------------------------------------------------------
 
   return (
     
       <div className={style.buttonYform}>
         <Link className={style.buttonBack} to="/home">
-          Regresar
+          GO BACK
         </Link>
         <div className={style.boxstyle}>
-          <h1 className={style.titulo}>Crea tu perro!</h1>
+          <h1 className={style.titulo}>LETS CREATE IT!</h1>
 
           <form
             className={style.formCreateDog}
             onSubmit={(e) => handleInputSubmit(e)}
           >
             <div className={style.div}>
-              <label className={style.label}> Nombre de tu raza:</label>
+              <label className={style.label}> Breed name:</label>
               <input
                 className={style.input}
                 onChange={(e) => handleChange(e)}
                 type="text"
-                placeholder='Por ejemplo: "Border Collie"'
+                placeholder='Name...'
                 name="name"
                 value={input.name}
               />
@@ -197,12 +234,12 @@ function CreateDog() {
             <p className={style.error}>{errors.name}</p>
             {/* --------------------------------------------------------- */}
             <div className={style.div}>
-              <label className={style.label}>Su altura Minima:</label>
+              <label className={style.label}>Height min:</label>
               <input
                 className={style.input}
                 onChange={(e) => handleChange(e)}
                 type="text"
-                placeholder="En centimetros"
+                placeholder="In cm..."
                 name="heightMin"
                 value={input.heightMin}
               />
@@ -210,12 +247,12 @@ function CreateDog() {
             <p className={style.error}>{errors.heightMin}</p>
             {/* --------------------------------------------------------- */}
             <div className={style.div}>
-              <label className={style.label}>Su altura Maxima</label>
+              <label className={style.label}>Height max:</label>
               <input
                 className={style.input}
                 onChange={(e) => handleChange(e)}
                 type="text"
-                placeholder="En centimetros"
+                placeholder="In cm..."
                 name="heightMax"
                 value={input.heightMax}
               />
@@ -223,12 +260,12 @@ function CreateDog() {
             </div>
             {/* --------------------------------------------------------- */}
             <div className={style.div}>
-              <label className={style.label}>Su peso Minimo:</label>
+              <label className={style.label}>Weight min:</label>
               <input
                 className={style.input}
                 onChange={(e) => handleChange(e)}
                 type="text"
-                placeholder="En kilos"
+                placeholder="In kg"
                 name="weightMin"
                 value={input.weightMin}
               />
@@ -236,12 +273,12 @@ function CreateDog() {
             <p className={style.error}>{errors.weightMin}</p>
             {/* --------------------------------------------------------- */}
             <div className={style.div}>
-              <label className={style.label}>Su peso Maximo:</label>
+              <label className={style.label}>Weight max:</label>
               <input
                 className={style.input}
                 onChange={(e) => handleChange(e)}
                 type="text"
-                placeholder="En kilos"
+                placeholder="In kg"
                 name="weightMax"
                 value={input.weightMax}
               />
@@ -249,12 +286,12 @@ function CreateDog() {
             <p className={style.error}>{errors.weightMax}</p>
             {/* --------------------------------------------------------- */}
             <div className={style.div}>
-              <label className={style.label}>Promedio de vida:</label>
+              <label className={style.label}>Life span:</label>
               <input
                 className={style.input}
                 onChange={(e) => handleChange(e)}
                 type="text"
-                placeholder="Ejemplo: 12-15"
+                placeholder="Example: 12-15..."
                 name="life_span"
                 value={input.life_span}
               />
@@ -262,10 +299,10 @@ function CreateDog() {
             <p className={style.error}>{errors.life_span}</p>
             {/* --------------------------------------------------------- */}
             <div className={style.div}>
-              <label className={style.label}>Selecciona Temperamentos</label>
+              <label className={style.label}>Select temperaments:</label>
               <select className={style.input} onChange={(e) => handleSelect(e)}>
                 {temps.map((temp) => (
-                  <option className={style.input} value={temp}>
+                  <option className={style.input} key={temp} value={temp}>
                     {temp}
                   </option>
                 ))}{" "}
@@ -289,12 +326,12 @@ function CreateDog() {
 
             {/* --------------------------------------------------------- */}
             <div className={style.div}>
-              <label className={style.label}>Ingresa la URL de la imagen</label>
+              <label className={style.label}>Image URL:</label>
               <input
                 className={style.input}
                 onChange={(e) => handleChange(e)}
                 type="text"
-                placeholder="Copia y pega aqui!"
+                placeholder="Copy and paste the url here..."
                 name="image"
                 value={input.image}
               />
@@ -307,7 +344,8 @@ function CreateDog() {
                 type="submit"
                 value="Crear Perro!"
               >
-                Crear Perro!
+                CREATE THE DOG!
+                
               </button>
             </div>
           </form>

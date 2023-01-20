@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useHistory } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -23,31 +23,34 @@ export default function NavBar() {
       name: "",
     });
   };
+  let history = useHistory ();
   const handleClick = (e) => {
+    
     e.preventDefault();
     dispatch(getDogos(e));
+    history.push ('/');
+
   };
 
   return (
     <div className={style.backimg}>
       <div className={style.components}>
         <div className={style.NavBar}>
-        <Link to="/">
-                  <button className={style.logo}   src={Logo}
-              alt="logoIMG">BEST FRIEND FINDER</button> 
-            </Link>
-           
-    
-        
-
+        <Link to="/" className={style.logo}>
+            <img
+              onClick={(e) => handleClick(e)}
+              className={style.imglogo}
+              src={Logo}
+              alt="logoIMG"
+            />
+          </Link>
           <form className={style.searchBar}>
             <input
               className={style.input}
               onChange={(e) => handleInput(e)}
-              placeholder="Busca tu perro..."
+              placeholder="Search..."
               maxLength="30"
             />
-
             <input
               onClick={(e) => handleInputSubmit(e)}
               className={style.submit}
@@ -55,9 +58,8 @@ export default function NavBar() {
               value="Search!"
             />
           </form>
-
           <Link to="/createDog">
-            <button className={style.creaPerro}>Crea tu perro!</button>
+            <button className={style.creaPerro}>Create your dog!</button>
           </Link>
         </div>
       </div>

@@ -5,7 +5,7 @@ export default function Paginado({ dogsXPage, paginado, dogs }) {
   const pageNumber = [];
 
   for (let i = 1; i <= Math.ceil(dogs / dogsXPage); i++) {
-    pageNumber.push(i); //ceil devuelve el valor mas bajo
+    pageNumber.push(i); 
   }
 
   return (

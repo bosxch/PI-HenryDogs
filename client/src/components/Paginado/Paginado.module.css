@@ -1,11 +1,14 @@
 .ulist{
+   
     display:flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    border-radius: 12px;
+    border-radius: 20px;
     overflow: hidden;
     border: 1px solid #d1d5db;
+    background-color: #b8f587;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .list{
     display: flex;
@@ -14,7 +17,7 @@
     background-color: var(--background-color-paginado);
     border: 0px solid var(--paginado-border-color);
     color: var(--text-color-paginado);
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
@@ -23,5 +26,5 @@
     background-color: rgb(54, 16, 241);
 }
 .list:hover{
-    background-color:var(--background-hover-paginado);
+    background-color:white;
 }

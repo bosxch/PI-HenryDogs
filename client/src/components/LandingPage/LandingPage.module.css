@@ -1,22 +1,22 @@
 .div{
-    background-image: url("./img/alvan-nee-T-0EW-SEbsE-unsplash.jpg");
+    background-image: url("./img/back.jpg");
     display: flex;
     flex-direction: column;
+    background-repeat: no-repeat;
     justify-content: space-between;
-    background-size: cover;
+    background-attachment: fixed;
+    background-size: 100% 100%;
     position: absolute;
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    
-    
+   
 }
 .section{
-    backdrop-filter: blur(4px);
+   
     background-color: #00000055;
     width: 100%;
     height: 100%;
-    min-height: 100vh;
     display: flex ;
     flex-direction: column;
     justify-content: center;
@@ -34,21 +34,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 6%;
-    
+   
     border-radius: 30px;
     text-shadow:1px 1px 10px rgb(0, 0, 0);
 }
-h1{
-    font-weight: 700;
-    color: var(--text-color-title-landingpage);
-}
+
 p{
-    font-size: 25px;
-    margin-left: 2em;
-    margin-right: 2em;
-    font-weight: 500;
+    
+    font-size: 30px;
+   
+    font-weight: 400;
+    text-shadow: 1px 1px 2px green;
     color: var(--text-color-body-landingpage);
+    font-family: 'Satisfy', cursive;
     
     
 }
@@ -61,19 +59,22 @@ p{
     padding: 15px 30px;
     font-weight: 700;
     transition: 0.5s;
-    color: var(--text-color-button-leters);
-    border: 2px solid var(--border-button-color);
+    color: green;
+    border: 2px solid white;
     box-shadow: 10px 5px 5px 4px rgba(4, 4, 0, 0.364);
+    
 }
 .button:hover{
     cursor: pointer;
     transform: scale(120%);
-    color: var(--border-button-color-hover);
+    color: green;
     transition: 0.5s;
+    background-color: white ;
 }
-.img{
-    border-radius: 9999px;
-    height: 450px;
-    width: 450px;
-    box-shadow: 0px 10px 20px 4px rgba(0, 0, 0, 0.536);
+
+.titulo{
+    font-family: 'Satisfy', cursive;
+    font-size: 70px;
+    text-shadow: 1px 1px 2px green;
+    color: var(--text-color-title-landingpage);
 }

@@ -17,13 +17,18 @@
     margin-bottom: 10%;
   }
   .buttonBack {
-    background-color: var(--button-go-back);
-    border-radius: 8px;
-    border-style: none;
-    box-sizing: border-box;
-    color: var(--button-go-back-letra);
-    cursor: pointer;
+    background-color: #b8f587;
+    border: 2px solid #b8f587;
+    border-radius: 25px;
+    display: flex;
+    align-items: flex-start;
+   
     text-decoration: none;
+  
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+   color: black;
+    cursor: pointer;
     font-size: 16px;
     font-weight: 500;
     height: fit-content;
@@ -35,7 +40,7 @@
     text-shadow: rgba(0, 0, 0, 0.036) 0 3px 8px;
   }
   .boxstyle {
-    background-color: var(--background-color-box);
+    background-color: #b8f587;
     margin-top: 30px;
     border-radius: 20px;
     margin-left: 25%;
@@ -93,25 +98,41 @@
     opacity: 1;
   }
   .buttonCrear {
-    background-color: var(--color-background-crear);
-    border-radius: 6px;
-    border-width: 0;
+    background-color: #b8f587;
+    border: 2px solid #b8f587;
+    border-radius: 25px;
+    display: flex;
+    align-items: flex-start;
+   
+    text-decoration: none;
+  
     box-sizing: border-box;
-    color: var(--color-text-crear);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+   color: black;
     cursor: pointer;
-    font-size: 100%;
-    height: 44px;
-    line-height: 1.15;
-    margin: 12px 0 0;
-    outline: none;
-    overflow: hidden;
-    padding: 0 25px;
-    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    height: fit-content;
+    width: fit-content;
+    padding: 15px 20px;
+    margin-top: 30px;
+    margin-left: 30px;
     text-align: center;
-    width: 100%;
+    text-shadow: rgba(0, 0, 0, 0.036) 0 3px 8px;
+  }
+  .buttonCrear:hover {
+    background-color: #98e388;
+    border: 2px solid #b8f587;
+transform: scale(1.05);
   }
   .error {
     font-size: medium;
     color: var(--error-message-color);
+  }
+
+  .buttonBack:hover {
+    background-color: #98e388;
+    border: 2px solid #b8f587;
+transform: scale(1.05);
   }
   
