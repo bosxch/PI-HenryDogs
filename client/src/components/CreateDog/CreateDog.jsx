@@ -24,15 +24,15 @@ const validate = (input) => {
    if (!input.heightMin) {
     errors.heightMin = "This cannot be incomplete.";
   }  
+  if (!regexNum.test(input.heightMin))
+    
+    errors.heightMin = "You can only use numbers.";
+
   if (input.heightMin <= 0 || input.heightMin >= 100) {
     
     errors.heightMin = "Must be greater than 1 and less than 100.";
   }  
-  if (!regexNum.test(input.heightMin))
-    
-    errors.heightMin = "You can only use numbers.";
-    
-    
+  
   if (input.heightMin > input.heightMax) {
       errors.heightMin = 'The min height cannot be bigger than the max height.'
     }
