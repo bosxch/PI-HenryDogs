@@ -1,19 +1,20 @@
-
-
 .NavBar {
   display: flex;
   background-position: cover;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 100px;
+  height: 70px;
   background-color: #c3b48b;
   border-bottom: 1px solid rgba(0, 0, 0, 0.208);
   border-radius: 30px;
     width: 100%;
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    margin-top: 0.5rem;
+    
 }
+
 .searchBar{
   border: 0.5px solid black;
   width: fit-content;
@@ -24,7 +25,9 @@
   align-items: center;
   box-shadow: 0 0 0 #0000;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  
 }
+
 .input{
   width: 25vw;
   background-color: #c3b48b;
@@ -32,35 +35,47 @@
   border: none;
   color: var(--input-color-text);
   padding: 10px 1rem;
+  font-family: 'Satisfy', cursive;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   
 }
+
 .input::placeholder{
   color: var(--input-color-placeholder-text);
   font-family: sans-serif;
   font-weight: 300;
+  font-family: 'Satisfy', cursive;
 }
+
 .input:focus{
   outline: none;
 }
+
 .submit{
   border: none;
   border-left: black 1px solid;
-  text-transform: uppercase;
   cursor: pointer;
   background-color: #8d6e27;
   height: 100%;
-  font-weight: 700;
   justify-content: center;
   align-items: center;
   object-fit: fill;
   padding: 10px;
+  font-family: 'Satisfy', cursive;
+}
+.submit:hover {
+  background-color: #69521b;
 }
 .imglogo {
   width: 90px;
   height: 90px;
-  border-radius: 10px ;
+  border-radius: 1rem ;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
+.imglogo:hover{
+  box-shadow: rgba(79, 102, 15, 0.473) 0px 10px 20px, rgba(97, 72, 17, 0.671) 0px 6px 6px;
+}
+
 .creaPerro{ 
   background-color:#8d6e27;
   border-radius: 6px;
@@ -77,5 +92,65 @@
   text-align: center;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  font-family: 'Satisfy', cursive;
 }
 
+.creaPerro:hover {
+  background-color: #69521b;
+}
+
+@media (orientation:portrait) {
+  .NavBar{
+    padding: 7px;
+  }
+  .backimg.responsive {
+      position: relative;
+  }
+
+  .backimg.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+  }
+  .imglogo {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem ;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+  .creaPerro{
+    width: 80%;
+    padding: 0 5px;
+    
+  }
+}
+
+
+
+@media screen and (max-width: 800px) and (orientation:portrait) {
+  .NavBar{
+    padding: 7px;
+  }
+  .imglogo {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem ;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+
+  .backimg {
+      display: flex;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .imglogo {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.5rem ;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    .creaPerro{
+      width: 80%;
+      padding: 0 5px;
+    }
+}

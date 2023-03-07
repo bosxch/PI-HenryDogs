@@ -152,4 +152,17 @@ router.get("/temperaments", async (req, res) => {
   res.status(200).json(nameTemp)
 });
 
+/*
+router.get('/randomtemp', async (req, res) => {
+  try {
+    await getTemperaments();
+    const randomtemp = await Temperamento.findAll()
+    res.status(200).send(randomtemp[0].name)
+  } catch (error) {
+    res.status(404).send(error)
+  }
+
+})
+*/
+
 module.exports = router;
