@@ -19,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build": "react-scripts build --openssl-legacy-provider",
+    "build": "babel src -d lib",
     "start": "react-scripts start --openssl-legacy-provider",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
