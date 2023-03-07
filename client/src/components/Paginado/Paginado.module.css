@@ -9,9 +9,9 @@
     border: 1px solid #d1d5db;
     background-color: #b8f587;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
     margin-left: 0.2rem;
     margin-right: 0.2rem;
-    
 }
 .list{
     display: flex;
@@ -20,7 +20,7 @@
     background-color: var(--background-color-paginado);
     border: 0px solid var(--paginado-border-color);
     color: var(--text-color-paginado);
-    padding: 10px;
+    padding: 11px;
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
@@ -34,8 +34,10 @@
     cursor: pointer;
     
 }
+
 .ulist .list:hover{
     background-color:#5bbe16;
+
 }
 
 
