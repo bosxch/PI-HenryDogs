@@ -19,6 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "debug": "NODE_OPTIONS='--openssl-legacy-provider' next dev -p 5000",
     "build": "react-scripts build --openssl-legacy-provider",
     "start": "NODE_OPTIONS=--openssl-legacy-provider npm-run-all ...",
     "test": "react-scripts test",
