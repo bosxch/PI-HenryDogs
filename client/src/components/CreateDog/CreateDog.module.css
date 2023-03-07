@@ -1,169 +1,169 @@
 .buttonYform {
-    background-image: url("../Home/img/foondos.jpg");
-    display: flex;
-    background-size: cover;
-    Overflow: auto ;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    justify-content: center;
-    flex-direction: column;
-    font-family: 'Satisfy', cursive;
-  }
-  .formCreateDog {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10%;
-  }
-  .buttonBack {
-    background-color: #b8f587;
-    border: 0.2rem solid #b8f587;
-    border-radius: 25px;
-    display: flex;
-    align-items: flex-start;
-    text-decoration: none;
-    font-family: 'Satisfy', cursive;
-    box-sizing: border-box;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-   color: black;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 31.25rem;
-    height: fit-content;
-    width: fit-content;
-    padding: 0.938rem 1.25rem;
-    margin-top: 1.875rem;
-    margin-left: 1.875rem;
-    text-align: center;
-    text-shadow: rgba(0, 0, 0, 0.036) 0 3px 8px;
-  }
-  .boxstyle {
-    background-color: #b8f587;
-    margin-top: 1.875rem;
-    border-radius: 1.25rem;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-bottom: 5%;
-  }
-  .titulo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.938rem;
-    color: var(--title-create-dogs);
-    text-shadow: 0.125rem 0.125rem 0.938rem var(--title-shadow-color);
-    font-weight: 37.5rem;
-    font-size: 3rem;
-  }
-  .div {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    height: fit-content;
-  }
-  .label {
-    display: flex;
-    font-weight: 31.25rem;
-    font-size: 1.1rem;
-    align-content: flex-start;
-    justify-content: flex-start;
-    margin-bottom: 0.313rem;
-    color: var(--color-titulos-campos);
-  }
-  .input {
-    padding: 0.625rem;
-    font-size: 1.1rem;
-    border-radius: 0.5rem;
-    border: none;
-    background-color: rgb(169, 214, 148);
-    font-family: 'Satisfy', cursive;
-  }
-  .tempsdisplay {
-    display: flex;
-    flex-direction: row;
-    padding: 0.313rem;
-    font-family: 'Satisfy', cursive;
-  }
-  .input::-webkit-scrollbar {
-    width: 0.75rem;               
-  }
-  
-  .input::-webkit-scrollbar-track {
-    background: #b8f587;        
-  }
-  
-  .input::-webkit-scrollbar-thumb {
-    background-color: rgb(171, 196, 171);   
-    border-radius: 1.25rem;       
-    border: 0.094rem solid transparent;  
-  }
-  .close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-close-button);
-    border-radius: 62.438rem;
-    width: 1.563rem;
-    height: 1.563rem;
-    opacity: 0.3;
-  }
-  .close:hover {
-    opacity: 1;
-    color: #cf3476;
-    border-color: #cf3476;
-  }
-  .buttonCrear {
-    display: flex;
-    justify-content: center;
-    background-color: #b8f587;
-    border: 2px solid #b8f587;
-    border-radius: 1.563rem;
-    display: flex;
-    align-items: flex-start;
-    text-decoration: none;
-    font-family: 'Satisfy', cursive;
-    box-sizing: border-box;
-    box-shadow: rgba(0, 0, 0, 0.19) 0rem 0.625rem 1.25rem, rgba(0, 0, 0, 0.23) 0rem 0.375rem 0.375rem;
-   color: black;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 31.25rem;
-    height: fit-content;
-    padding: 0.938rem 1.25rem;
-    margin-top: 1.875rem;
-    text-align: center;
-    text-shadow: rgba(0, 0, 0, 0.036) 0 0.188rem 0.5rem;
-  }
-  .buttonCrear:hover {
-    background-color: #98e388;
-    border: 0.125rem solid #b8f587;
-transform: scale(1.05);
-  }
-  .error {
-    font-size: medium;
-    color: #cf3476
-  }
-
-  .buttonBack:hover {
-    background-color: #98e388;
-    border: 0.125rem solid #b8f587;
-transform: scale(1.05);
-  }
-  
-  
-body::-webkit-scrollbar {
+  background-image: url("../Home/img/foondos.jpg");
+  display: flex;
+  background-size: cover;
+  Overflow: auto ;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Satisfy', cursive;
+}
+.formCreateDog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10%;
+}
+.buttonBack {
+  background-color: #b8f587;
+  border: 0.2rem solid #b8f587;
+  border-radius: 25px;
+  display: flex;
+  align-items: flex-start;
+  text-decoration: none;
+  font-family: 'Satisfy', cursive;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+ color: black;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 31.25rem;
+  height: fit-content;
+  width: fit-content;
+  padding: 0.938rem 1.25rem;
+  margin-top: 1.875rem;
+  margin-left: 1.875rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.036) 0 3px 8px;
+}
+.boxstyle {
+  background-color: #b8f587;
+  margin-top: 1.875rem;
+  border-radius: 1.25rem;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 5%;
+}
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.938rem;
+  color: var(--title-create-dogs);
+  text-shadow: 0.125rem 0.125rem 0.938rem var(--title-shadow-color);
+  font-weight: 37.5rem;
+  font-size: 3rem;
+}
+.div {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: fit-content;
+}
+.label {
+  display: flex;
+  font-weight: 31.25rem;
+  font-size: 1.1rem;
+  align-content: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 0.313rem;
+  color: var(--color-titulos-campos);
+}
+.input {
+  padding: 0.625rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: rgb(169, 214, 148);
+  font-family: 'Satisfy', cursive;
+}
+.tempsdisplay {
+  display: flex;
+  flex-direction: row;
+  padding: 0.313rem;
+  font-family: 'Satisfy', cursive;
+}
+.input::-webkit-scrollbar {
   width: 0.75rem;               
 }
 
-body::-webkit-scrollbar-track {
+.input::-webkit-scrollbar-track {
   background: #b8f587;        
 }
 
-body::-webkit-scrollbar-thumb {
+.input::-webkit-scrollbar-thumb {
   background-color: rgb(171, 196, 171);   
   border-radius: 1.25rem;       
   border: 0.094rem solid transparent;  
+}
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-close-button);
+  border-radius: 62.438rem;
+  width: 1.563rem;
+  height: 1.563rem;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+  color: #cf3476;
+  border-color: #cf3476;
+}
+.buttonCrear {
+  display: flex;
+  justify-content: center;
+  background-color: #b8f587;
+  border: 2px solid #b8f587;
+  border-radius: 1.563rem;
+  display: flex;
+  align-items: flex-start;
+  text-decoration: none;
+  font-family: 'Satisfy', cursive;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.19) 0rem 0.625rem 1.25rem, rgba(0, 0, 0, 0.23) 0rem 0.375rem 0.375rem;
+ color: black;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 31.25rem;
+  height: fit-content;
+  padding: 0.938rem 1.25rem;
+  margin-top: 1.875rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.036) 0 0.188rem 0.5rem;
+}
+.buttonCrear:hover {
+  background-color: #98e388;
+  border: 0.125rem solid #b8f587;
+transform: scale(1.05);
+}
+.error {
+  font-size: medium;
+  color: #cf3476
+}
+
+.buttonBack:hover {
+  background-color: #98e388;
+  border: 0.125rem solid #b8f587;
+transform: scale(1.05);
+}
+
+
+body::-webkit-scrollbar {
+width: 0.75rem;               
+}
+
+body::-webkit-scrollbar-track {
+background: #b8f587;        
+}
+
+body::-webkit-scrollbar-thumb {
+background-color: rgb(171, 196, 171);   
+border-radius: 1.25rem;       
+border: 0.094rem solid transparent;  
 }
 
