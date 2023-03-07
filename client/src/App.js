@@ -7,7 +7,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import CreateDog from "./components/CreateDog/CreateDog";
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://best-friend-finder-git-main-bosxch.vercel.app/';
+axios.defaults.baseURL = 'http://localhost:3001';
 
 function App() {
   return (
