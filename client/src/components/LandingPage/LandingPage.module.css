@@ -26,8 +26,8 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    margin-left: 6em;
-    margin-right: 10em;
+    margin-left: 8rem;
+    margin-right: 10rem;
 }
 .left{
     width: 100%;
@@ -93,3 +93,76 @@ p{
         opacity: 1;
     }
 }
+
+@media (orientation:portrait) {
+    .div{
+        background-image: url("./img/giphy.gif");
+        width: 100%;
+        height: 100%;
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-attachment: fixed;
+    }
+    .titulo{
+        margin-left: 1rem;
+        font-family: 'Satisfy', cursive;
+        font-size: 40px;
+        text-shadow: 1px 1px 2px green;
+        color: var(--text-color-title-landingpage);
+        animation: aparecerElemento 1.5s;
+    }
+    .section{
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        display: flex ;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    p{
+        width: 100%;
+        font-size: 18px;
+        text-shadow: 1px 1px 2px green;
+        color: var(--text-color-body-landingpage);
+        font-family: 'Satisfy', cursive;
+        animation: aparecerElemento 2.5s;
+    }
+  }
+  
+  
+  
+  @media screen and (max-width: 800px) and (orientation:portrait) {
+    .div{
+        background-image: url("./img/giphy.gif");
+        width: 100%;
+        height: 100%;
+        display: flex;
+    
+    justify-content: center;
+    background-attachment: fixed;
+    }
+    .titulo{
+        margin-left: 1rem;
+        font-family: 'Satisfy', cursive;
+        font-size: 30px;
+        text-shadow: 1px 1px 2px green;
+        color: var(--text-color-title-landingpage);
+        animation: aparecerElemento 1.5s;
+    }
+    .section{
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        display: flex ;
+    }
+    p{
+        width: 100%;
+        font-size: 18px;
+        text-shadow: 1px 1px 2px green;
+        color: var(--text-color-body-landingpage);
+        font-family: 'Satisfy', cursive;
+        animation: aparecerElemento 2.5s;
+    }
+  }
