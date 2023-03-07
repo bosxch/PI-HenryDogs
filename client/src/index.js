@@ -4,7 +4,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./Redux/store/index"
 import { BrowserRouter } from "react-router-dom";
-
+import Toaster from './Toaster.js'
 import reportWebVitals from "./reportWebVitals";
 
 
@@ -19,6 +19,7 @@ ReactDOM.render(
         <App />
       </BrowserRouter>
     </Provider>
+    <Toaster />
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -17,7 +17,7 @@ export const DELETE_DOG = "DELETE_DOG";
 
 export function getDogos() {
   return async function (dispatch) {
-     var json = await axios.get("http://localhost:3001/dogs");
+     var json = await axios.get("/dogs");
     return dispatch({
       type: GET_ALL_DOGS,
       payload: json.data,
@@ -28,7 +28,7 @@ export function getDogos() {
 export function getDogDetail(id) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`http://localhost:3001/dogs/${id}`);
+      let json = await axios.get(`/dogs/${id}`);
       return dispatch({
         type: GET_DOG_DETAIL,
         payload: json.data,
@@ -41,7 +41,7 @@ export function getDogDetail(id) {
 export function getTemps() {
   return async function (dispatch) {
     try {
-      let temps = await axios.get("http://localhost:3001/temperaments");
+      let temps = await axios.get("/temperaments");
       let tempnew = temps.data.filter(el => el !== "")
       return dispatch({
         type: GET_ALL_TEMPS,
@@ -55,7 +55,7 @@ export function getTemps() {
 export function getDogsName(name) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+      var json = await axios.get(`/dogs?name=${name}`);
       return dispatch({
         type: GET_NAME_DOGS,
         payload: json.data,
@@ -91,7 +91,7 @@ export function filterByTemps(payload) {
 }
 export function postDog(payload) {
   return async function (dispatch) {
-    const response = await axios.post("http://localhost:3001/dogs/", payload);
+    const response = await axios.post("/dogs/", payload);
     return dispatch({
       type: CREATE_DOGO,
       payload: response,
@@ -106,7 +106,7 @@ export function getClean() {
 }
 export function deleteDog(id) {
   return async function (dispatch) {
-    const response = await axios.delete(`http://localhost:3001/dogs/${id}`);
+    const response = await axios.delete(`/dogs/${id}`);
     return dispatch({
       type: DELETE_DOG,
       payload: response.data,

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     background-repeat: no-repeat;
-    justify-content: space-between;
+    justify-content: center;
     background-attachment: fixed;
     background-size: 100% 100%;
     position: absolute;
@@ -13,7 +13,6 @@
    
 }
 .section{
-   
     background-color: #00000055;
     width: 100%;
     height: 100%;
@@ -24,29 +23,31 @@
 
 }
 .textyimg{
+    width: 100%;
     display: flex;
     flex-direction: row;
     margin-left: 6em;
     margin-right: 10em;
 }
 .left{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
-    border-radius: 30px;
+    width: 100%;
+    margin-left: 1rem;
+    padding: 15px 30px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+
     text-shadow:1px 1px 10px rgb(0, 0, 0);
 }
 
 p{
-    
+    width: 100%;
     font-size: 30px;
-   
     font-weight: 400;
     text-shadow: 1px 1px 2px green;
     color: var(--text-color-body-landingpage);
     font-family: 'Satisfy', cursive;
+    animation: aparecerElemento 2.5s;
     
     
 }
@@ -56,12 +57,13 @@ p{
     background-color: var(--bg-color-button);
     border-radius: 15px;
     font-size: 2rem;
-    padding: 15px 30px;
+    padding: 30px 30px;
     font-weight: 700;
     transition: 0.5s;
     color: green;
     border: 2px solid white;
     box-shadow: 10px 5px 5px 4px rgba(4, 4, 0, 0.364);
+    font-family: 'Satisfy', cursive;
     
 }
 .button:hover{
@@ -73,8 +75,21 @@ p{
 }
 
 .titulo{
+    margin-left: 1rem;
     font-family: 'Satisfy', cursive;
     font-size: 70px;
     text-shadow: 1px 1px 2px green;
     color: var(--text-color-title-landingpage);
+    animation: aparecerElemento 1.5s;
+}
+
+@keyframes aparecerElemento {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

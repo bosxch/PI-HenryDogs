@@ -16,16 +16,16 @@ export default function NavBar() {
     e.preventDefault();
     setName(e.target.value);
   };
+
   const handleInputSubmit = (e) => {
     e.preventDefault();
     dispatch(getDogsName(name));
-    setName({
-      name: "",
-    });
+    setName("");
   };
+
   let history = useHistory ();
+
   const handleClick = (e) => {
-    
     e.preventDefault();
     dispatch(getDogos(e));
     history.push ('/');
@@ -50,6 +50,7 @@ export default function NavBar() {
               onChange={(e) => handleInput(e)}
               placeholder="Search..."
               maxLength="30"
+              value={name}
             />
             <input
               onClick={(e) => handleInputSubmit(e)}
@@ -59,7 +60,7 @@ export default function NavBar() {
             />
           </form>
           <Link to="/createDog">
-            <button className={style.creaPerro}>Create your dog!</button>
+            <button className={style.creaPerro}>Create your breed!</button>
           </Link>
         </div>
       </div>

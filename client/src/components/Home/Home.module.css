@@ -2,7 +2,7 @@
   background-image: url("./img/foondos.jpg");
   display: flex;
   background-size: cover;
-  overflow-y:scroll;
+  Overflow: auto ;
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -22,6 +22,54 @@
 }
 .paginado{
   padding-top: 50px;
+  font-family: 'Satisfy', cursive;
+
+  width: 100%;
+}
+
+.pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding-top: 0.5rem;
+  font-family: 'Satisfy', cursive;
+}
+.pagination.prev {
+margin-left: 0.2rem;
+}
+
+.pagination.next{
+  margin-right: 0.2rem;
+}
+.pagination button {
+  text-decoration: none;
+  font-family: 'Satisfy', cursive;
+  background-color: #b8f587;
+  border: 2px solid #b8f587;
+  
+}
+.pagination button:hover {
+  background: #5bbe16;
+  border-top-color: rgba(0, 0, 0, 0.35);
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.oculto{
+  visibility: hidden;
+}
+.pagination button:focus,
+.pagination button:active {
+ 
+  border-left-width: 1px;
+  background: #5bbe16;
+
+}
+.pagination .actived {
+  padding-top: 4px;
+  border-left-width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0px 2px 1px 0px rgba(0, 0, 0, 0.25);
 }
 .filters {
   background-color: #b8f587;
@@ -36,7 +84,23 @@
   border: none;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  font-family: 'Satisfy', cursive;
+  margin-top: 0.5rem;
 }
+.filters::-webkit-scrollbar {
+  width: 0.75rem;               
+}
+
+.filters::-webkit-scrollbar-track {
+  background: #b8f587;        
+}
+
+.filters::-webkit-scrollbar-thumb {
+  background-color: rgb(171, 196, 171);   
+  border-radius: 1.25rem;       
+  border: 0.094rem solid transparent;  
+}
+
 .refreshButton {
   display: flex;
   margin-left: 15px;
@@ -49,6 +113,21 @@
   overflow: hidden;
   outline: none;
 }
+
+body::-webkit-scrollbar {
+  width: 0.75rem;               
+}
+
+body::-webkit-scrollbar-track {
+  background: #b8f587;        
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(171, 196, 171);   
+  border-radius: 1.25rem;       
+  border: 0.094rem solid transparent;  
+}
+
 @media screen {
   .cards {
     color: var(--text-color-cards-pc);
@@ -59,7 +138,7 @@
     text-decoration: none;
     margin-left: 20%;
     margin-right: 20%;
-   ;
+
   }
 }
 
@@ -73,6 +152,7 @@
     margin-left: 10%;
     margin-right: 10%;
   }
+
 }
 @media screen and (max-width: 800px) {
   .cards {
@@ -84,8 +164,9 @@
     margin-left: 25%;
     margin-right: 25%;
   }
+
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 680px) {
   .cards {
     color: var(--text-color-cards-phone);
     display: grid;
@@ -93,5 +174,5 @@
     gap: 5px;
     text-decoration: none;
   }
-}
 
+}

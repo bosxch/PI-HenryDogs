@@ -33,15 +33,26 @@ export default function Home() {
 
   //*---------------------PAGINADO ---------------------Estados locales..
   const [currentPage, setCurrentPage] = useState(1); 
-  const [ /* orden */, setOrden] = useState(""); 
+  const [ orden , setOrden] = useState(""); 
   const [dogsXPage] = useState(8); 
   const iLastDog = currentPage * dogsXPage; 
   const iFirstDog = iLastDog - dogsXPage; 
   const currentDogs = dogs.slice(iFirstDog, iLastDog); 
+  const currentPages = dogs.length / dogsXPage;
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+    const nextPage = () => {
+      if (currentPages > currentPage) setCurrentPage(currentPage + 1);
+      console.log(currentPages)
+    };
+  
+    const previousPage = () => {
+      if (currentPage > 1) setCurrentPage(currentPage - 1);
+    };
+ 
   //*--------------------------------------------------------------------
 
   useEffect(() => {
@@ -56,6 +67,7 @@ export default function Home() {
   function handleClick(e) {
     e.preventDefault(); 
     dispatch(getDogos()); 
+    setCurrentPage(1);
   }
   function handleFilter(e) {
     e.preventDefault();
@@ -81,6 +93,9 @@ export default function Home() {
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
   }
+
+  const prev = '<<'
+  const next = '>>'
 //-----------------------------------------------------------------------
   return (
     <div className={style.all}>
@@ -137,7 +152,27 @@ export default function Home() {
        
       </div>
       {/* ----------------------RENDER CARDS------------------------- */}
-      <Paginado className={style.paginado} dogsXPage={dogsXPage} dogs={dogs.length} paginado={paginado} />
+      <div className={style.pagination}>
+        {currentPage === 1 ? 
+        <button onClick={previousPage} className={style.oculto}>
+        {prev}
+      </button>
+        :
+        <button onClick={previousPage} className={style.prev}>
+        {prev}
+      </button>
+        }
+      <Paginado className={style.paginado} dogsXPage={dogsXPage} dogs={dogs.length} paginado={paginado} currentPage={currentPage} />
+      {currentPages === currentPage || currentPages < currentPage? 
+       <button onClick={nextPage} className={style.oculto}>
+       {next}
+     </button>
+      :
+      <button onClick={nextPage} className={style.next}>
+      {next}
+    </button>
+      }
+        </div>
       <div className={style.cards}>
         {currentDogs?.map(
           (

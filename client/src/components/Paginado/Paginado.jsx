@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Paginado.module.css";
 
-export default function Paginado({ dogsXPage, paginado, dogs }) {
+export default function Paginado({ dogsXPage, paginado, dogs, currentPage }) {
   const pageNumber = [];
 
   for (let i = 1; i <= Math.ceil(dogs / dogsXPage); i++) {
@@ -11,12 +11,13 @@ export default function Paginado({ dogsXPage, paginado, dogs }) {
   return (
     <div>
       <div className={style.ulist}>
+        
         {pageNumber &&
           pageNumber.map((number) => (
             <button
               key={number}
-              className={style.list}
               onClick={() => paginado(number)}
+              className={number === currentPage ? style.actived : style.list}
             >
               {number}
             </button>
