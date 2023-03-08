@@ -12,7 +12,13 @@ const getApiInfo = async () => {
 
   const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`); //Usamos axios, fetch en desuso
   const apiInfo = apiUrl.data.map(async (dogs) => {
-    await Raza.create({
+    let tempdb = await Temperamento.findAll({
+      where: {
+        name: dogs.temperament,
+      },
+    });
+    dogCreated = await Raza.findOrCreate({
+      where: {
         id: dogs.id,
         name: dogs.name,
         heightMax : dogs.height.metric.split(" - ")[1]? dogs.height.metric.split(" - ")[1]
@@ -24,12 +30,8 @@ const getApiInfo = async () => {
         life_span: dogs.life_span,
         created_in_dogs: dogs.origin,
         image: dogs.image.url,
+      }
       })
-      let tempdb = await Temperamento.findAll({
-        where: {
-          name: dogs.temperament,
-        },
-      });
       dogCreated.addTemperamento(tempdb);
   });
   return apiInfo;
