@@ -7,7 +7,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import CreateDog from "./components/CreateDog/CreateDog";
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'pi-henrydogs-production.up.railway.app';
 
 function App() {
   return (

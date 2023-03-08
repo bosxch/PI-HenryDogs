@@ -22,7 +22,7 @@
   "scripts": {
     "debug": "NODE_OPTIONS='--openssl-legacy-provider' next dev -p 5000",
     "build": "react-scripts build --openssl-legacy-provider",
-    "start": "NODE_OPTIONS=--openssl-legacy-provider npm-run-all ...",
+    "start": "react-scripts start --openssl-legacy-provider",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
