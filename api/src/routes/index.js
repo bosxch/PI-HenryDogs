@@ -23,8 +23,9 @@ const getApiInfo = async () => {
       weightMin: dogs.weight.metric.split(" - ")[0],
       life_span: dogs.life_span,
       temperament: dogs.temperament,
-      created_in_dogs: dogs.origin,
+      origin: dogs.origin,
       image: dogs.image.url,
+      bred_for: dogs.bred_for,
     };
   });
   return apiInfo;
