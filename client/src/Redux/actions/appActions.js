@@ -91,7 +91,7 @@ export function filterByTemps(payload) {
 }
 export function postDog(payload) {
   return async function (dispatch) {
-    const response = await axios.post("/dogs/", payload);
+    const response = await axios.post("/dogs", payload);
     return dispatch({
       type: CREATE_DOGO,
       payload: response,
