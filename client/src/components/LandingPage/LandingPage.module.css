@@ -53,9 +53,8 @@ p{
 }
 
 .button{
-    background-color: #00000555;
+    background-color: #c9c9c9;
     margin-top: 10vh;
-    background-color: var(--bg-color-button);
     border-radius: 30px;
     font-size: 2rem;
     padding: 30px 30px;
