@@ -1,9 +1,9 @@
 const { Router } = require("express");
 const axios = require("axios");
 const { Raza, Temperamento } = require("../db");
-const {apiKey} = process.env;
 const router = Router();
-
+require('dotenv').config();
+const {apiKey} = process.env;
 // Las funciones son asincronas ya que esperan respuesta de la api o de la db
 
 //--------------------------------------------------------------------------------------------
