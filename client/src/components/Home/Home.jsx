@@ -81,14 +81,14 @@ export default function Home() {
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
   }
-  
+  /*
   function handleFilterByApi_DB(e) {
     e.preventDefault();
     dispatch(filterByApi_DB(e.target.value));
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
   }
-  
+  */
   function handleFilterByTemps(e) {
     e.preventDefault();
     dispatch(filterByTemps(e.target.value));
@@ -134,7 +134,7 @@ export default function Home() {
           <option value="minWeight">Min-Max</option>
         </select>
         {/* ----------------------API/DB----------------------------- */}
-        
+        {/*
          <select
           className={style.filters}
           onChange={(e) => handleFilterByApi_DB(e)}
@@ -143,7 +143,7 @@ export default function Home() {
           <option value="api">Api</option>
           <option value="db">DataBase</option>
         </select> 
-        
+        */}
        
         {/* ----------------------RELOAD----------------------------- */}
         <button

@@ -90,7 +90,6 @@ import {
           action.payload === "db"
             ? state.dogs.filter((e) => typeof e.id === 'UUIDV4')
             : state.dogs.filter((e) => typeof e.id === 'UUID');
-  
         return {
           ...state,
           dogs: result,
