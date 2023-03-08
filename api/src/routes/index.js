@@ -9,29 +9,23 @@ const {apiKey} = process.env;
 //--------------------------------------------------------------------------------------------
 //esta funcion va a traer todos los datos de la api y como quiero que guarde la informacion en estado dogs, dentro del return en height y weight, la info viene en string "12 - 15" hago un split en "-", pregunto si tiene 2 valores en max guardo lo que quede desp de - y min el [0], esto va a ser para simplificar logicas en el front
 const getApiInfo = async () => {
+
   const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`); //Usamos axios, fetch en desuso
-  const apiInfo = apiUrl.data.map(async (dogs) => {
-    dogCreated = await Raza.create({
-      where: {
-        id: dogs.id,
-        name: dogs.name,
-        heightMax : dogs.height.metric.split(" - ")[1]? dogs.height.metric.split(" - ")[1]
-        : dogs.height.metric.split(" - ")[0],
-        heightMin : dogs.height.metric.split(" - ")[0],
-        weightMax: dogs.weight.metric.split(" - ")[1] ? dogs.weight.metric.split(" - ")[1]
-        : dogs.weight.metric.split(" - ")[0],
-        weightMin: dogs.weight.metric.split(" - ")[0],
-        life_span: dogs.life_span,
-        created_in_dogs: dogs.origin,
-        image: dogs.image.url,
-      }
-      })
-      let tempdb = await Temperamento.findAll({
-        where: {
-          name: dogs.temperament,
-        },
-      });
-      dogCreated.addTemperamento(tempdb);
+  const apiInfo = await apiUrl.data.map((dogs) => {
+    return {
+      id: dogs.id,
+      name: dogs.name,
+      heightMax : dogs.height.metric.split(" - ")[1]? dogs.height.metric.split(" - ")[1]
+      : dogs.height.metric.split(" - ")[0],
+      heightMin : dogs.height.metric.split(" - ")[0],
+      weightMax: dogs.weight.metric.split(" - ")[1] ? dogs.weight.metric.split(" - ")[1]
+      : dogs.weight.metric.split(" - ")[0],
+      weightMin: dogs.weight.metric.split(" - ")[0],
+      life_span: dogs.life_span,
+      temperament: dogs.temperament,
+      created_in_dogs: dogs.origin,
+      image: dogs.image.url,
+    };
   });
   return apiInfo;
 };
@@ -75,13 +69,11 @@ const dataBaseInfo = async () => {
 };
 //--------------------------------------------------------------------------------
 const getAllData = async () => {
- if(!Raza.length)  {
+ 
   const apiInfo = await getApiInfo();
   const dbInfo = await dataBaseInfo();
-  return apiInfo.concat(dbInfo);
-} else {
-  return await dataBaseInfo();
-}
+  const apiDbInfo = apiInfo.concat(dbInfo);
+  return apiDbInfo;
 };
 //---------------------------------ROUTES----------------------------------------------
 router.get("/dogs", async (req, res) => {
