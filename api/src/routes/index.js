@@ -12,7 +12,7 @@ const getApiInfo = async () => {
 
   const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`); //Usamos axios, fetch en desuso
   const apiInfo = apiUrl.data.map(async (dogs) => {
-  return await Raza.findOrCreate({
+   await Raza.findOrCreate({
     id: dogs.id,
     name: dogs.name,
     heightMax : dogs.height.metric.split(" - ")[1]? dogs.height.metric.split(" - ")[1]
