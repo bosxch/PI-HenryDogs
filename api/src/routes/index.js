@@ -9,15 +9,9 @@ const {apiKey} = process.env;
 //--------------------------------------------------------------------------------------------
 //esta funcion va a traer todos los datos de la api y como quiero que guarde la informacion en estado dogs, dentro del return en height y weight, la info viene en string "12 - 15" hago un split en "-", pregunto si tiene 2 valores en max guardo lo que quede desp de - y min el [0], esto va a ser para simplificar logicas en el front
 const getApiInfo = async () => {
-
   const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`); //Usamos axios, fetch en desuso
   const apiInfo = apiUrl.data.map(async (dogs) => {
-    let tempdb = await Temperamento.findAll({
-      where: {
-        name: dogs.temperament,
-      },
-    });
-    dogCreated = await Raza.findOrCreate({
+    dogCreated = await Raza.create({
       where: {
         id: dogs.id,
         name: dogs.name,
@@ -32,6 +26,11 @@ const getApiInfo = async () => {
         image: dogs.image.url,
       }
       })
+      let tempdb = await Temperamento.findAll({
+        where: {
+          name: dogs.temperament,
+        },
+      });
       dogCreated.addTemperamento(tempdb);
   });
   return apiInfo;
@@ -76,11 +75,13 @@ const dataBaseInfo = async () => {
 };
 //--------------------------------------------------------------------------------
 const getAllData = async () => {
- 
+ if(!Raza.length)  {
   const apiInfo = await getApiInfo();
   const dbInfo = await dataBaseInfo();
-  const apiDbInfo = apiInfo.concat(dbInfo);
-  return apiDbInfo;
+  return apiInfo.concat(dbInfo);
+} else {
+  return await dataBaseInfo();
+}
 };
 //---------------------------------ROUTES----------------------------------------------
 router.get("/dogs", async (req, res) => {
