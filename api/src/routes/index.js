@@ -11,21 +11,26 @@ const {apiKey} = process.env;
 const getApiInfo = async () => {
 
   const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`); //Usamos axios, fetch en desuso
-  const apiInfo = apiUrl.data.map((dogs) => {
-    return {
-      id: dogs.id,
-      name: dogs.name,
-      heightMax : dogs.height.metric.split(" - ")[1]? dogs.height.metric.split(" - ")[1]
-      : dogs.height.metric.split(" - ")[0],
-      heightMin : dogs.height.metric.split(" - ")[0],
-      weightMax: dogs.weight.metric.split(" - ")[1] ? dogs.weight.metric.split(" - ")[1]
-      : dogs.weight.metric.split(" - ")[0],
-      weightMin: dogs.weight.metric.split(" - ")[0],
-      life_span: dogs.life_span,
-      temperament: dogs.temperament,
-      created_in_dogs: dogs.origin,
-      image: dogs.image.url,
-    };
+  const apiInfo = apiUrl.data.map(async (dogs) => {
+    await Raza.create({
+        id: dogs.id,
+        name: dogs.name,
+        heightMax : dogs.height.metric.split(" - ")[1]? dogs.height.metric.split(" - ")[1]
+        : dogs.height.metric.split(" - ")[0],
+        heightMin : dogs.height.metric.split(" - ")[0],
+        weightMax: dogs.weight.metric.split(" - ")[1] ? dogs.weight.metric.split(" - ")[1]
+        : dogs.weight.metric.split(" - ")[0],
+        weightMin: dogs.weight.metric.split(" - ")[0],
+        life_span: dogs.life_span,
+        created_in_dogs: dogs.origin,
+        image: dogs.image.url,
+      })
+      let tempdb = await Temperamento.findAll({
+        where: {
+          name: dogs.temperament,
+        },
+      });
+      dogCreated.addTemperamento(tempdb);
   });
   return apiInfo;
 };
@@ -70,15 +75,7 @@ const dataBaseInfo = async () => {
 //--------------------------------------------------------------------------------
 const getAllData = async () => {
  
-  const apiInfo = await getApiInfo().map(async (dog) => await Raza.findOrCreate({
-    where: {
-      model: Temperamento,
-      attributes: ["name"],
-      trough: {
-        attributes: [],
-      },
-    }
-  }));
+  const apiInfo = await getApiInfo();
   const dbInfo = await dataBaseInfo();
   const apiDbInfo = apiInfo.concat(dbInfo);
   return apiDbInfo;
