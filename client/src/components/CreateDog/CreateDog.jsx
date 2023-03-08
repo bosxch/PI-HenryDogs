@@ -26,7 +26,7 @@ function CreateDog() {
     life_span: "",
     image: "",
     temperament: [],
-    created_in_dogs: false
+    created_in_dogs: true
   });
   const [errors, setErrors] = useState({});
 
