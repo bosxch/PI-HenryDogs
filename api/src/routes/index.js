@@ -11,8 +11,9 @@ const {apiKey} = process.env;
 const getApiInfo = async () => {
 
   const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`); //Usamos axios, fetch en desuso
-  const apiInfo = await apiUrl.data.map((dogs) => {
-    return {
+  const apiInfo = apiUrl.data.map( async (dogs) => {
+   return await Raza.findOrCreate({
+    where: {
       id: dogs.id,
       name: dogs.name,
       heightMax : dogs.height.metric.split(" - ")[1]? dogs.height.metric.split(" - ")[1]
@@ -23,10 +24,10 @@ const getApiInfo = async () => {
       weightMin: dogs.weight.metric.split(" - ")[0],
       life_span: dogs.life_span,
       temperament: dogs.temperament,
-      origin: dogs.origin,
+      created_in_dogs: dogs.origin,
       image: dogs.image.url,
-      bred_for: dogs.bred_for,
-    };
+    }
+    }) 
   });
   return apiInfo;
 };
