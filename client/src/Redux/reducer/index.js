@@ -88,8 +88,8 @@ import {
       case FILTER_API_DB: {
         let result =
           action.payload === "db"
-            ? state.dogs.filter((e) => e.created_in_dogs)
-            : state.dogs.filter((e) => !e.created_in_dogs);
+            ? state.dogs.filter((e) => typeof e.id === 'UUIDV4')
+            : state.dogs.filter((e) => typeof e.id === 'UUID');
   
         return {
           ...state,
