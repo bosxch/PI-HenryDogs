@@ -86,11 +86,10 @@ import {
         };
       }
       case FILTER_API_DB: {
-        const copy = state.dogs;
         const result =
           action.payload === "db"
-            ? copy.filter((e) => e.created_in_dogs === true)
-            : copy.filter((e) => !e.created_in_dogs);
+            ? state.dogs.filter((e) => e.created_in_dogs === true)
+            : state.dogs.filter((e) => !e.created_in_dogs);
   
         return {
           ...state,
