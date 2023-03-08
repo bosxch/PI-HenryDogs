@@ -53,9 +53,10 @@ p{
 }
 
 .button{
+    background-color: #00000555;
     margin-top: 10vh;
     background-color: var(--bg-color-button);
-    border-radius: 15px;
+    border-radius: 30px;
     font-size: 2rem;
     padding: 30px 30px;
     font-weight: 700;
@@ -123,11 +124,14 @@ p{
     }
     p{
         width: 100%;
-        font-size: 18px;
+        font-size: 19px;
         text-shadow: 1px 1px 2px green;
         color: var(--text-color-body-landingpage);
         font-family: 'Satisfy', cursive;
         animation: aparecerElemento 2.5s;
+    }
+    .button{
+        background-color: #c9c9c9;
     }
   }
   
@@ -159,10 +163,13 @@ p{
     }
     p{
         width: 100%;
-        font-size: 18px;
+        font-size: 19px;
         text-shadow: 1px 1px 2px green;
         color: var(--text-color-body-landingpage);
         font-family: 'Satisfy', cursive;
         animation: aparecerElemento 2.5s;
+    }
+    .button{
+        background-color: #c9c9c9;
     }
   }

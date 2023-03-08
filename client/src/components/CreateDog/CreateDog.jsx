@@ -26,6 +26,7 @@ function CreateDog() {
     life_span: "",
     image: "",
     temperament: [],
+    created_in_dogs: false
   });
   const [errors, setErrors] = useState({});
 
@@ -54,6 +55,7 @@ function CreateDog() {
       if (input.image === '') {
         input.image = 'https://cdn.pixabay.com/photo/2014/04/03/00/35/footprint-308794_960_720.png'
       }
+      
       dispatch(postDog(input));
       toast.success("Your dog breed has been successfully created!");
       setInput({

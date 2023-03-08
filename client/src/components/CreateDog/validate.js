@@ -34,9 +34,9 @@ export default function validate(input) {
   if (!input.heightMax) {
     errors.heightMax = "This cannot be incomplete.";
   } 
-  if (input.heightMax <= 0 || input.heightMax >= 100) {
+  if (input.heightMax <= 0 || input.heightMax >= 150) {
     
-    errors.heightMax = "Must be greater than 1 and less than 100.";
+    errors.heightMax = "Must be greater than 1 and less than 150.";
   } 
   if (input.heightMax < input.heightMin) {
     
@@ -63,8 +63,8 @@ export default function validate(input) {
   if (!input.weightMax) {
     errors.weightMax = "This cannot be incomplete.";
   } 
-  if (input.weightMax <= 0 || input.weightMax >= 100) {
-    errors.weightMax = "Must be greater than 1 and less than 100.";
+  if (input.weightMax <= 0 || input.weightMax >= 150) {
+    errors.weightMax = "Must be greater than 1 and less than 150.";
   } 
   if (input.weightMax < input.weightMin) {
     errors.weightMax = "The minimum weight cannot be greater than the maximum.";
@@ -99,8 +99,8 @@ export default function validate(input) {
   if (input.life_span.charAt(0) === "-") {
     errors.life_span = "You must add an initial value.";
   }
-  if (input.life_span.split('-')[1] > 25) {
-    errors.life_span = 'You must enter values below 25 years.'
+  if (input.life_span.split('-')[1] > 30) {
+    errors.life_span = 'You must enter values below 30 years.'
   }
   //----------------------------------------------------------------
  
