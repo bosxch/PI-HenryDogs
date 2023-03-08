@@ -68,7 +68,7 @@ import {
       case FILTER_BY_WEIGHT: {
         //const orderDogs = state.AllDogsCopy
   
-        var orderWeight =
+        let orderWeight =
           action.payload === "maxWeight"
             ? state.dogs.sort((a, b) => Number(b.weightMax) - Number(a.weightMax))
             : state.dogs.sort(
@@ -86,9 +86,9 @@ import {
         };
       }
       case FILTER_API_DB: {
-        const result =
+        let result =
           action.payload === "db"
-            ? state.dogs.filter((e) => e.created_in_dogs === true)
+            ? state.dogs.filter((e) => e.created_in_dogs)
             : state.dogs.filter((e) => !e.created_in_dogs);
   
         return {
